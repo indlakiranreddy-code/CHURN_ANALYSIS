@@ -1,0 +1,29 @@
+/* =============================================================
+   PROJECT: Customer Churn Analysis
+   PURPOSE: Identify churned customers, analyze retention trends,
+            and quantify revenue at risk using SQL.
+
+   DATASET:
+     - customer_id
+     - signup_date
+     - last_order_date
+     - orders_count
+     - total_spend
+     - city
+     - segment
+     - churn_flag (1 = churned, 0 = active)
+
+   KEY ANALYSIS PERFORMED:
+     1. Churn identification (>90 days inactivity)
+     2. Monthly churn rate calculation
+     3. Revenue lost due to churn
+     4. Segment-wise churn patterns
+     5. City-level churn behavior
+     6. High-value churners detection
+     7. At-risk customers (60–90 days inactivity)
+     8. Cohort retention analysis
+     9. RFM scoring using window functions
+
+   AUTHOR: Indla Kiran Reddy
+   LAST UPDATED: 2025
+   ============================================================= */
