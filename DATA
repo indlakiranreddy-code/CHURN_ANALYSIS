@@ -1,0 +1,71 @@
+=============================================================
+DATA DIRECTORY — CUSTOMER CHURN ANALYSIS PROJECT
+=============================================================
+
+This directory contains the dataset used for all SQL analysis.
+
+FILES INCLUDED:
+1. churn_analysis_dataset.xlsx
+   - 300 customer records
+   - Columns:
+       • customer_id
+       • signup_date
+       • last_order_date
+       • orders_count
+       • total_spend
+       • city
+       • segment
+       • churn_flag
+
+-------------------------------------------------------------
+HOW TO LOAD THE DATA INTO A DATABASE
+-------------------------------------------------------------
+
+1. Download the Excel file (churn_analysis_dataset.xlsx).
+
+2. Convert it into CSV if your SQL engine does not support XLSX:
+   - Open in Excel → Save As → CSV (UTF-8)
+
+3. Create a table:
+   CREATE TABLE customers (
+       customer_id     INT,
+       signup_date     DATE,
+       last_order_date DATE,
+       orders_count    INT,
+       total_spend     INT,
+       city            VARCHAR(50),
+       segment         VARCHAR(50),
+       churn_flag      INT
+   );
+
+4. Load the CSV into your SQL database:
+
+   -- MySQL
+   LOAD DATA INFILE 'path/to/churn.csv'
+   INTO TABLE customers
+   FIELDS TERMINATED BY ','
+   LINES TERMINATED BY '\n'
+   IGNORE 1 LINES;
+
+   -- PostgreSQL
+   \COPY customers FROM 'path/to/churn.csv' CSV HEADER;
+
+   -- SQL Server
+   BULK INSERT customers
+   FROM 'path/to/churn.csv'
+   WITH (
+       FORMAT = 'CSV',
+       FIRSTROW = 2
+   );
+
+-------------------------------------------------------------
+NOTES:
+- Ensure date formats are consistent (YYYY-MM-DD).
+- Verify NULL values if any during import.
+- After loading, run a quick check:
+  SELECT COUNT(*) FROM customers;
+-------------------------------------------------------------
+
+LAST UPDATED: 2025
+AUTHOR: Indla Kiran Reddy
+=============================================================
